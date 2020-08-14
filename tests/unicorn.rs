@@ -277,6 +277,7 @@ fn x86_mem_callback() {
     let expects = vec![
         MemExpectation(MemType::WRITE, 0x2000, 4, 0xdeadbeef),
         MemExpectation(MemType::READ_UNMAPPED, 0x10000, 4, 0),
+        MemExpectation(MemType::READ, 0x10000, 4, 0),
     ];
     let mems: Vec<MemExpectation> = Vec::new();
     let mems_cell = Rc::new(RefCell::new(mems));
@@ -512,7 +513,9 @@ fn emulate_mips() {
 }
 
 #[test]
+#[ignore]
 fn emulate_ppc() {
+    // Not yet implemented
     let ppc_code32 = vec![0x7F, 0x46, 0x1A, 0x14]; // add 26, 6, 3
 
     let mut unicorn = unicorn::Unicorn::new(Arch::PPC, Mode::PPC32, 0).expect("failed to initialize unicorn instance");
