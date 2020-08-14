@@ -34,11 +34,19 @@ These are WIP and only tested in ARM LITTLE_ENDIAN mode.
 
 This project has been tested on Linux, OS X and Windows. 
 
-On Windows
+### On Windows use vcpkg
 
-Run `vcpkg.exe  install unicorn:x64-windows-static`
+Run `cp ./vcpkg/* {PATH OF VCPKG}/ports/unicorn/` OR Manual copy overwrite
 
-Run `set RUSTFLAGS=-Ctarget-feature=+crt-static`
+Run `vcpkg.exe install unicorn:x64-windows-static-md`
+
+### On Linux Or Macos
+
+Refer to the [unicorn documentation](https://github.com/unicorn-engine/unicorn/blob/master/docs/COMPILE-NIX.md) to compile.
+
+For example, run `UNICORN_STATIC=yes ./make.sh` to generate a static library, and then run `sudo ./make.sh install` to install
+
+### To Use
 
 To use unicorn-rs, simply add it as a dependency to the Cargo.toml of your program.
 
