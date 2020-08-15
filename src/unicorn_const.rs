@@ -1,5 +1,8 @@
 #![allow(non_camel_case_types)]
 use bitflags::bitflags;
+use std::fmt;
+use bitflags::_core::fmt::Formatter;
+use std::error::Error;
 
 pub const API_MAJOR: u64 = 1;
 pub const API_MINOR: u64 = 0;
@@ -35,6 +38,14 @@ pub enum uc_error {
     RESOURCE = 20,
     EXCEPTION = 21,
 }
+
+impl fmt::Display for uc_error {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        write!(f, "uc_error: {:?}", self)
+    }
+}
+
+impl Error for uc_error {}
 
 #[repr(C)]
 #[derive(PartialEq, Debug, Clone, Copy)]
