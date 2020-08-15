@@ -107,7 +107,7 @@ pub fn init_emu_with_heap(arch: Arch,
                                     top: 0, 
                                     unalloc_hook: 0 as _ });
 
-    let mut unicorn = super::Unicorn::new(arch, Mode::LITTLE_ENDIAN, heap)?;
+    let mut unicorn = super::Unicorn::new(arch, Mode::MODE_32, heap)?;
     let mut uc = unicorn.borrow(); // get handle
 
     // uc memory regions have to be 8 byte aligned
